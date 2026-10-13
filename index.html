@@ -95,7 +95,6 @@
         <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white border-b border-forest-100 px-6 py-4 space-y-3 font-medium text-earth-800" x-cloak>
             <a @click="mobileMenuOpen = false" href="#shop" class="block py-2 hover:text-forest-600">Shop Greens</a>
             <a @click="mobileMenuOpen = false" href="#about" class="block py-2 hover:text-forest-600">Our Farm</a>
-            <a @click="mobileMenuOpen = false" href="#process" class="block py-2 hover:text-forest-600">Hydroponic Tech</a>
             <a @click="mobileMenuOpen = false" href="#faq" class="block py-2 hover:text-forest-600">FAQ & Delivery</a>
             <a @click="mobileMenuOpen = false" href="#contact" class="block py-2 hover:text-forest-600">Contact</a>
         </div>
@@ -229,7 +228,7 @@
                 <!-- Farm Gallery Image -->
                 <div class="relative">
                     <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-forest-700">
-                        <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=800&q=80" alt="Hydroponic greenhouse racks" class="w-full h-[450px] object-cover">
+                        <img src="https://inhydro.in/wp-content/uploads/2026/02/Untitled-design-19.png" alt="Commercial indoor hydroponic gully setup">
                     </div>
                 </div>
             </div>
@@ -528,8 +527,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer id="contact" class="bg-earth-900 text-earth-300 py-16 border-t border-earth-800">
+   <footer id="contact" class="bg-earth-900 text-earth-300 py-16 border-t border-earth-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-earth-800">
                 <div class="space-y-4 md:col-span-1">
@@ -546,7 +544,8 @@
 
                 <div>
                     <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-xs">
+                    <!-- Added text-earth-400 here so list items are visible -->
+                    <ul class="space-y-2 text-xs text-earth-400">
                         <li><a href="#shop" class="hover:text-forest-400 transition-colors">Shop Greens</a></li>
                         <li><a href="#about" class="hover:text-forest-400 transition-colors">Our Hydroponic Farm</a></li>
                         <li><a href="#faq" class="hover:text-forest-400 transition-colors">Dunedin Delivery Info</a></li>
@@ -557,7 +556,7 @@
                 <div>
                     <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Kaikorai Valley Facility</h4>
                     <p class="text-xs text-earth-400 leading-relaxed">
-                        42 Kaikorai Valley Road<br>
+                        324 Kaikorai Valley Road<br>
                         Dunedin 9011<br>
                         Otago, New Zealand
                     </p>
@@ -566,15 +565,12 @@
 
                 <div>
                     <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Stay Connected</h4>
-                    <p class="text-xs text-earth-400 mb-4">Subscribe for harvest updates and seasonal herb drops.</p>
-                    <div class="flex gap-2">
-                        <input type="email" placeholder="Your email address" class="bg-earth-800 border border-earth-700 px-3 py-2 rounded-xl text-xs text-white focus:outline-none focus:border-forest-500 w-full">
-                        <button class="bg-forest-600 hover:bg-forest-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-all">Join</button>
-                    </div>
+                    <p class="text-xs text-earth-400 mb-4">Contact for harvest updates and seasonal herb drops.</p>
+                    <p class="text-xs text-forest-400 font-semibold mt-3">Mobile: 02040622497</p>
                 </div>
             </div>
 
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-earth-500">
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-earth-400">
                 <p>&copy; 2026 Otago Greens. Grown with pride in Kaikorai Valley, Dunedin.</p>
                 <div class="flex gap-6 mt-4 sm:mt-0">
                     <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
