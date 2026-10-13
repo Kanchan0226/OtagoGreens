@@ -743,13 +743,17 @@
                 },
 
                 initStore() {
-                    // Initialize Lucide icons after Alpine is ready
-                    setTimeout(() => {
-                        if (typeof lucide !== 'undefined') {
-                            lucide.createIcons();
-                        }
-                    }, 50);
+            // Check every 100ms for up to 2 seconds until Lucide loads
+            let checks = 0;
+            const checkLucide = setInterval(() => {
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
+                    clearInterval(checkLucide);
                 }
+                checks++;
+                if (checks > 20) clearInterval(checkLucide); // Stop after 2 seconds
+            }, 100);
+        }
             }
         }
     </script>
