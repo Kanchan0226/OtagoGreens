@@ -479,9 +479,9 @@
                         </div>
 
 
-                         <!-- Step 3: Payment Simulation -->
+                         <!-- Step 3: Payment -->
                         <div>
-                            <h4 class="text-sm font-bold text-earth-900 uppercase tracking-wider mb-3">3. Payment Simulation (Bank transfer on Delivery/Pickup)</h4>
+                            <h4 class="text-sm font-bold text-earth-900 uppercase tracking-wider mb-3">3. Payment (Bank transfer on Delivery/Pickup)</h4>
                         </div>
                         
                         <!-- Order Summary & Submit -->
@@ -741,11 +741,37 @@
                     this.cart = this.cart.filter(item => item.id !== id);
                 },
 
-                processOrder() {
-                    this.checkoutOpen = false;
-                    this.successModalOpen = true;
-                    this.orderNumber = Math.floor(100000 + Math.random() * 900000);
-                },
+                submitOrder() {
+    // 1. Generate your order number if not already done
+    this.orderNumber = Math.floor(100000 + Math.random() * 900000);
+
+    // 2. Format cart items into a clean text summary
+    let cartSummaryText = this.cart.map(item => `${item.name} (Qty: ${item.quantity || 1}) - $${item.price}`).join(', ');
+
+    // 3. Prepare data for Netlify Form submission
+    let formData = new FormData();
+    formData.append('form-name', 'order-submission');
+    formData.append('orderNumber', 'OG-' + this.orderNumber);
+    formData.append('customerName', this.customer.name);
+    formData.append('customerEmail', this.customer.email);
+    formData.append('customerPhone', this.customer.phone);
+    formData.append('customerAddress', `${this.customer.address}, ${this.customer.suburb}`);
+    formData.append('deliveryOption', this.deliveryOption);
+    formData.append('cartSummary', cartSummaryText);
+
+    // 4. Send data silently to Netlify in the background
+    fetch('/', {
+        method: 'POST',
+        body: formData
+    })
+    .then(() => {
+        // 5. Open your success modal & clear cart
+        this.checkoutOpen = false;
+        this.successModalOpen = true;
+        this.cart = [];
+    })
+    .catch((error) => console.error('Form submission error:', error));
+},
 
                 resetStore() {
                     this.successModalOpen = false;
@@ -768,5 +794,17 @@
             }
         }
     </script>
+
+    <!-- Netlify Hidden Form Detection -->
+<form name="order-submission" netlify hidden>
+    <input type="text" name="orderNumber" />
+    <input type="text" name="customerName" />
+    <input type="email" name="customerEmail" />
+    <input type="text" name="customerPhone" />
+    <input type="text" name="customerAddress" />
+    <input type="text" name="deliveryOption" />
+    <textarea name="cartSummary"></textarea>
+</form>
+    
 </body>
 </html>
