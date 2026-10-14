@@ -741,7 +741,7 @@
                     this.cart = this.cart.filter(item => item.id !== id);
                 },
 
-                submitOrder() {
+                processOrder() {
     // 1. Generate your order number if not already done
     this.orderNumber = Math.floor(100000 + Math.random() * 900000);
 
